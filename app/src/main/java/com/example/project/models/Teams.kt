@@ -8,6 +8,5 @@ import androidx.room.PrimaryKey
 data class Teams(
     @PrimaryKey(autoGenerate = true) val id: Int,
     @ColumnInfo(name = "name") var name: String,
-    @ColumnInfo(name = "level") var level: String,
-    @ColumnInfo(name = "code") var code: String
+    @ColumnInfo(name = "level") var level: String
 )
