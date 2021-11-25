@@ -8,6 +8,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        //TODO: Bonne chance xavier :)----
+        //TODO: Bonne chance xavier :)----xavier
     }
 }
