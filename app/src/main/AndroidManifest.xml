@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Project">
         <activity
+            android:name=".Views.CreateAccountActivity"
+            android:exported="false" />
+        <activity
             android:name=".Views.LoginActivity"
             android:exported="true">
             <intent-filter>
