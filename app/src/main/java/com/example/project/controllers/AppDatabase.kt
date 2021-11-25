@@ -2,9 +2,11 @@ package com.example.project.controllers
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.example.project.models.Users
+import androidx.room.TypeConverters
+import com.example.project.models.*
 
-@Database(entities = [Users::class], version = 1)
+@Database(entities = [Users::class, Players::class, Coaches::class, Game::class, Game_User::class, Team_User::class, Teams::class], version = 1)
+@TypeConverters(DateConverter::class)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun databaseDAO(): com.example.project.data.Database
 }
