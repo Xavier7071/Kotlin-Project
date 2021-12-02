@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.project">
+
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:allowBackup="true"
@@ -10,14 +13,28 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Project">
         <activity
-<<<<<<< HEAD
-            android:name=".Views.CreateAccountActivity"
+            android:name=".Views.CreateGameActivity"
             android:exported="false" />
         <activity
-            android:name=".Views.LoginActivity"
-=======
+            android:name=".Views.TeamPlayerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Views.PlayerList"
+            android:exported="false" />
+        <activity
+            android:name=".Views.CreateTeamActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Views.TeamActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Views.TeamsActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Views.CreateAccountActivity"
+            android:exported="true" />
+        <activity
             android:name=".views.LoginActivity"
->>>>>>> 997a4005b694bd8b342fa1d81ffb77a34aac1681
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

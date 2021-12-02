@@ -1,3 +1,25 @@
 <resources>
     <string name="app_name">Project</string>
+
+    <string-array name="catergoryArray">
+        <item>AAA</item>
+        <item>AA</item>
+        <item>BB</item>
+        <item>A</item>
+        <item>B</item>
+        <item>C</item>
+        <item>Autre</item>
+    </string-array>
+
+    <string-array name="arenaLocalisationArray">
+        <item>Colisée Cardin</item>
+        <item>Arena st-Joseph</item>
+        <item>Arena de Contrecoeur</item>
+    </string-array>
+
+    <string-array name="opponentArray">
+        <item>Marinier de sorel</item>
+        <item>Tigre de Beloeil</item>
+        <item>Blitz de Varenne</item>
+    </string-array>
 </resources>
