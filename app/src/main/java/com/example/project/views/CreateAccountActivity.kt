@@ -32,5 +32,7 @@ class CreateAccountActivity : AppCompatActivity() {
             val intent = Intent("android.media.action.IMAGE_CAPTURE")
             startActivity(intent)
         }
+
+        //TODO: demander la position du joueur (gardien, ailier, deffenceur, centre)
     }
 }

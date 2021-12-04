@@ -36,7 +36,7 @@ class CreateGameActivity : AppCompatActivity() {
         val datePickerBtn : TextView = findViewById(R.id.datePickerBtn)
 
         datePickerBtn.setOnClickListener {
-            TimePickerFragment().show(supportFragmentManager, "timePicker")
+            //TimePickerFragment().show(supportFragmentManager, "timePicker")
         }
 
     }

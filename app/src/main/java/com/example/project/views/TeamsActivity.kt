@@ -32,9 +32,7 @@ class TeamsActivity : AppCompatActivity() {
 
         val addTeamBtn: FloatingActionButton = findViewById(R.id.addTeamBtn)
         addTeamBtn.setOnClickListener {
-            //dialogAlert()
-            val intent = Intent(this, CreateGameActivity::class.java)
-            startActivity(intent)
+            dialogAlert()
         }
     }
 
