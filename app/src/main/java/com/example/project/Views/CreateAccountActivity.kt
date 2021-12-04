@@ -3,10 +3,9 @@ package com.example.project.Views
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.TextView
+import android.widget.*
 import com.example.project.R
-import com.example.project.views.LoginActivity
+import com.example.project.controllers.MainController
 
 class CreateAccountActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,11 +15,10 @@ class CreateAccountActivity : AppCompatActivity() {
         val takePictureBtn : TextView = findViewById(R.id.takePictureBtn)
 
         val loginTextBtn : TextView = findViewById(R.id.loginText)
-        val connectBtn: Button = findViewById(R.id.connectBtn)
+        val createBtn: Button = findViewById(R.id.createBtn)
 
-        connectBtn.setOnClickListener {
-            val intent = Intent(this, TeamsActivity::class.java)
-            startActivity(intent)
+        createBtn.setOnClickListener {
+            createAccount()
         }
 
         loginTextBtn.setOnClickListener {
@@ -32,7 +30,29 @@ class CreateAccountActivity : AppCompatActivity() {
             val intent = Intent("android.media.action.IMAGE_CAPTURE")
             startActivity(intent)
         }
+    }
 
-        //TODO: demander la position du joueur (gardien, ailier, deffenceur, centre)
+    private fun createAccount() {
+        val name = findViewById<EditText>(R.id.nameInput)
+        val email = findViewById<EditText>(R.id.newEmailInput)
+        val password = findViewById<EditText>(R.id.newPasswordInput)
+        val confirmPassword = findViewById<EditText>(R.id.confirmPasswordInput)
+        val phoneNumber = findViewById<EditText>(R.id.phoneInput)
+        val users = MainController.instance.getDatabase()!!.databaseDAO().findAllUsers()
+
+        if (name.text.toString().isEmpty() || email.text.toString().isEmpty() || password.text.toString().isEmpty() || confirmPassword.text.toString().isEmpty() || phoneNumber.text.toString().isEmpty()) {
+            Toast.makeText(this, "Veuillez entrer vos informations", Toast.LENGTH_SHORT).show()
+        } else if (users.find { it.email == email.text.toString() } != null) {
+            Toast.makeText(this, "Un compte existe avec ce email", Toast.LENGTH_SHORT).show()
+        } else if (users.find { it.phoneNumber == phoneNumber.text.toString() } != null) {
+            Toast.makeText(this, "Un compte existe avec ce numéro de téléphone", Toast.LENGTH_SHORT).show()
+        } else if (password.text.toString() != confirmPassword.text.toString()) {
+            Toast.makeText(this, "Le mot de passe de confirmation est différent du mot de passe entré", Toast.LENGTH_SHORT).show()
+        } else {
+            // si c'est un joueur, on va l'insert icitte dans players ou sinon dans coaches selon l'ID du insert user
+            MainController.instance.insertUser(name.text.toString(), email.text.toString(), password.text.toString(), phoneNumber.text.toString())
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
