@@ -33,11 +33,11 @@ class CreateGameActivity : AppCompatActivity() {
             gameLocationSpinner.adapter = adapter
         }
 
-        val datePickerBtn : TextView = findViewById(R.id.datePickerBtn)
+       // val datePickerBtn : TextView = findViewById(R.id.datePickerBtn)
 
-        datePickerBtn.setOnClickListener {
-            TimePickerFragment().show(supportFragmentManager, "timePicker")
-        }
+        //datePickerBtn.setOnClickListener {
+          //  TimePickerFragment().show(supportFragmentManager, "timePicker")
+        //}
 
     }
 }

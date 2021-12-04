@@ -1,6 +1,7 @@
 package com.example.project.controllers
 
 import android.content.Context
+import android.graphics.Bitmap
 import android.util.Log
 import androidx.room.Room
 import com.example.project.models.*
@@ -14,6 +15,7 @@ class MainController private constructor() {
     private var teamUserList = ArrayList<Team_User>()
     private var gameList = ArrayList<Game>()
     private var gameUserList = ArrayList<Game_User>()
+    private var currentId = 0
 
     private object HOLDER {
         val INSTANCE = MainController()
@@ -71,5 +73,35 @@ class MainController private constructor() {
         } catch (ex: Exception) {
             Log.d("logdemo", "Records already in Database: ${ex.message}")
         }
+    }
+
+    fun getDatabase(): AppDatabase? {
+        return database
+    }
+
+    fun insertUser(name: String, email: String, password: String, phoneNumber: String) {
+        database!!.databaseDAO().insertUser(
+            Users(
+                (database!!.databaseDAO().findAllUsers().lastIndex + 2),
+                name,
+                email,
+                password,
+                phoneNumber
+            )
+        )
+    }
+
+    fun getId(): Int {
+        return currentId
+    }
+
+    fun setId(id: Int) {
+        currentId = id
+    }
+
+    fun getTeams(): ArrayList<Teams> {
+        teamList.clear()
+        teamList.addAll(database!!.databaseDAO().findTeamsById(currentId))
+        return teamList
     }
 }

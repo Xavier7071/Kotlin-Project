@@ -32,7 +32,7 @@
         app:layout_constraintVertical_bias="0.407" />
 
     <EditText
-        android:id="@+id/editTextTextPassword"
+        android:id="@+id/passwordInput"
         android:layout_width="188dp"
         android:layout_height="38dp"
         android:ems="10"
@@ -46,7 +46,7 @@
         app:layout_constraintVertical_bias="0.406" />
 
     <EditText
-        android:id="@+id/editTextTextEmailAddress"
+        android:id="@+id/emailInput"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:ems="10"
@@ -71,7 +71,7 @@
         app:layout_constraintVertical_bias="0.266" />
 
     <Button
-        android:id="@+id/connectBtn"
+        android:id="@+id/createBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Connexion"
