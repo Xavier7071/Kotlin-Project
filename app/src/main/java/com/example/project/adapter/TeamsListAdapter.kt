@@ -1,5 +1,6 @@
 package com.example.project.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,7 +17,7 @@ class TeamsListAdapter(private var list: ArrayList<Teams>) :
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val name: TextView = view.findViewById(R.id.teamName)
         val button: Button = view.findViewById(R.id.teamButton)
-        val layout: LinearLayout = view.findViewById(R.id.layoutContainer)
+        val layout: LinearLayout = view.findViewById(R.id.layoutContainer) //TODO: ça sert à rien
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -27,7 +28,8 @@ class TeamsListAdapter(private var list: ArrayList<Teams>) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val current = list[position]
-        holder.name.text = "${current.name}"
+        Log.v("test", "Name: " + current.name)
+        holder.name.text = current.name
         holder.button.setOnClickListener {
             launchTeamInfo(current.id)
         }

@@ -35,6 +35,9 @@ interface Database {
     fun insertAllTeamUsers(users: List<Team_User>)
 
     @Insert
+    fun insertTeam(Team : Teams)
+
+    @Insert
     fun insertAllTeams(users: List<Teams>)
 
     @Insert
