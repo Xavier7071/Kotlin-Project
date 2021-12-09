@@ -184,6 +184,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:clickable="true"
+            android:gravity="center"
             android:minHeight="48dp"
             android:text="Vous avez déjà un compte?"
             android:textSize="@dimen/small_font"
@@ -195,6 +196,7 @@
             app:layout_constraintVertical_bias="0.976" />
 
         <RadioGroup
+            android:id="@+id/type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
