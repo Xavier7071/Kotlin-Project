@@ -17,7 +17,7 @@ class AccountActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.account_recycler_view)
+        setContentView(R.layout.account_activity)
 
         val addTeamBtn: FloatingActionButton = findViewById(R.id.addTeamBtn)
         addTeamBtn.setOnClickListener {
@@ -37,12 +37,12 @@ class AccountActivity : AppCompatActivity() {
         builder.setPositiveButton("Ajouter") { _, _ -> validateCode(codeInput.toString()) }
         builder.setNegativeButton("Quitter") { _, _ -> }
         builder.show()
-
     }
 
     private fun validateCode(code: String) {
         if (MainController.instance.validateTeamExists(code)) {
-
+            MainController.instance.insertTeamUser(code)
+            loadRecyclerView()
         }
     }
 

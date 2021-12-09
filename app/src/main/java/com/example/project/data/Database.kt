@@ -37,13 +37,26 @@ interface Database {
     @Insert
     fun insertAllTeams(users: List<Teams>)
 
+    @Insert
+    fun insertTeamUser(teamUser: Team_User)
+
     @Query("SELECT * FROM Users")
     fun findAllUsers(): List<Users>
 
-    @Query("SELECT * FROM Teams t JOIN Team_Player tp ON tp.team_id = t.id WHERE tp.user_id IN (:id)")
+    @Query("SELECT * FROM Teams t JOIN Team_User tp ON tp.team_id = t.id WHERE tp.user_id IN (:id)")
     fun findTeamsById(id: Int): List<Teams>
 
 
     @Query("SELECT * FROM Teams t WHERE t.code IN (:code)")
     fun findTeamByCode(code: String): List<Teams>
+
+    @Query("SELECT * FROM Team_User")
+    fun findAllTeamUsers(): List<Team_User>
+
+
+    @Query("SELECT * FROM Players")
+    fun findAllPlayers(): List<Players>
+
+    @Query("SELECT * FROM Coaches")
+    fun findAllCoaches(): List<Coaches>
 }

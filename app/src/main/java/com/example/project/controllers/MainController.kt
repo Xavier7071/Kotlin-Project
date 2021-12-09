@@ -1,8 +1,6 @@
 package com.example.project.controllers
 
 import android.content.Context
-import android.graphics.Bitmap
-import android.util.Log
 import androidx.room.Room
 import com.example.project.models.*
 
@@ -26,69 +24,32 @@ class MainController private constructor() {
     }
 
     fun loadDatabase(applicationContext: Context) {
-
         database = Room.databaseBuilder(applicationContext, AppDatabase::class.java, "database")
             .allowMainThreadQueries()
             .fallbackToDestructiveMigration()
             .build()
-
-        try {
-            database!!.databaseDAO().insertAllUsers(userList)
-        } catch (ex: Exception) {
-            Log.d("logdemo", "Records already in Database: ${ex.message}")
-        }
-
-        try {
-            database!!.databaseDAO().insertAllCoaches(coachList)
-        } catch (ex: Exception) {
-            Log.d("logdemo", "Records already in Database: ${ex.message}")
-        }
-
-        try {
-            database!!.databaseDAO().insertAllPlayers(playerList)
-        } catch (ex: Exception) {
-            Log.d("logdemo", "Records already in Database: ${ex.message}")
-        }
-
-        try {
-            database!!.databaseDAO().insertAllTeams(teamList)
-        } catch (ex: Exception) {
-            Log.d("logdemo", "Records already in Database: ${ex.message}")
-        }
-
-        try {
-            database!!.databaseDAO().insertAllTeamUsers(teamUserList)
-        } catch (ex: Exception) {
-            Log.d("logdemo", "Records already in Database: ${ex.message}")
-        }
-
-        try {
-            database!!.databaseDAO().insertAllGames(gameList)
-        } catch (ex: Exception) {
-            Log.d("logdemo", "Records already in Database: ${ex.message}")
-        }
-
-        try {
-            database!!.databaseDAO().insertAllGameUsers(gameUserList)
-        } catch (ex: Exception) {
-            Log.d("logdemo", "Records already in Database: ${ex.message}")
-        }
     }
 
     fun getDatabase(): AppDatabase? {
         return database
     }
 
-    fun insertUser(name: String, email: String, password: String, phoneNumber: String) {
+    fun insertUser(name: String, email: String, password: String, phoneNumber: String, isPlayer: Boolean) {
+        val id = database!!.databaseDAO().findAllUsers().lastIndex + 2
         database!!.databaseDAO().insertUser(
             Users(
-                (database!!.databaseDAO().findAllUsers().lastIndex + 2),
+                id,
                 name,
                 email,
                 password,
                 phoneNumber
             )
         )
+        if (isPlayer) {
+            database!!.databaseDAO().insertPlayer(Players(database!!.databaseDAO().findAllPlayers().lastIndex + 2, id))
+        } else {
+            database!!.databaseDAO().insertCoach(Coaches(database!!.databaseDAO().findAllCoaches().lastIndex + 2, id))
+        }
     }
 
     fun getId(): Int {
@@ -107,8 +68,25 @@ class MainController private constructor() {
 
     fun validateTeamExists(code: String): Boolean {
         if (database!!.databaseDAO().findTeamByCode(code).isEmpty()) {
-            return false;
+            return false
         }
-        return true;
+        return true
+    }
+
+    fun insertTeamUser(code: String) {
+        val team = getTeamByCode(code)
+        database!!.databaseDAO().insertTeamUser(
+            Team_User(
+                database!!.databaseDAO().findAllTeamUsers().lastIndex + 2,
+                currentId,
+                team[0].id
+            )
+        )
+    }
+
+    private fun getTeamByCode(code: String): ArrayList<Teams> {
+        teamList.clear()
+        teamList.addAll(database!!.databaseDAO().findTeamByCode(code))
+        return teamList
     }
 }

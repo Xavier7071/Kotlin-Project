@@ -21,6 +21,7 @@ class CreateAccountActivity : AppCompatActivity() {
 
         val loginTextBtn : TextView = findViewById(R.id.loginText)
         val createBtn: Button = findViewById(R.id.createBtn)
+        findViewById<RadioButton>(R.id.playerBtn).isChecked = true
 
         createBtn.setOnClickListener {
             createAccount()
@@ -55,21 +56,7 @@ class CreateAccountActivity : AppCompatActivity() {
             Toast.makeText(this, "Le mot de passe de confirmation est différent du mot de passe entré", Toast.LENGTH_SHORT).show()
         } else {
             if (email.text.contains("@")) {
-                MainController.instance.insertUser(name.text.toString(), email.text.toString(), password.text.toString(), phoneNumber.text.toString())
-
-
-                val rg = findViewById<View>(R.id.accountType) as RadioGroup
-
-                rg.setOnCheckedChangeListener { group, checkedId ->
-                    when (checkedId) {
-                        R.id.player -> {
-                        }
-                        R.id.coach -> {
-                        }
-                    }
-                }
-
-
+                MainController.instance.insertUser(name.text.toString(), email.text.toString(), password.text.toString(), phoneNumber.text.toString(), findViewById<RadioButton>(R.id.playerBtn).isChecked)
                 val intent = Intent(this, LoginActivity::class.java)
                 startActivity(intent)
             }
