@@ -17,6 +17,7 @@ class AccountActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.account_recycler_view)
 
         val addTeamBtn: FloatingActionButton = findViewById(R.id.addTeamBtn)
         addTeamBtn.setOnClickListener {
