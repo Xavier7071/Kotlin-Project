@@ -61,7 +61,7 @@ class MainController private constructor() {
         currentId = id
     }
 
-    fun getUserType(): Boolean {
+    fun getIsPlayer(): Boolean {
         return isPlayer
     }
 

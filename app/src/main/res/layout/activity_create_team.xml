@@ -24,6 +24,7 @@
         android:id="@+id/catergorySpinner"
         android:layout_width="116dp"
         android:layout_height="50dp"
+        android:entries="@array/catergoryArray"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.515"
@@ -73,7 +74,7 @@
         app:layout_constraintVertical_bias="0.327" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/createTeamBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Créer"

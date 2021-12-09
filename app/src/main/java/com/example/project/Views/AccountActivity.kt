@@ -1,5 +1,6 @@
 package com.example.project.views
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
@@ -21,7 +22,13 @@ class AccountActivity : AppCompatActivity() {
 
         val addTeamBtn: FloatingActionButton = findViewById(R.id.addTeamBtn)
         addTeamBtn.setOnClickListener {
-            dialogAlert()
+            if (MainController.instance.getIsPlayer()) {
+                dialogAlert()
+            } else {
+                val intent = Intent(this, CreateTeamActivity::class.java)
+                startActivity(intent)
+            }
+
         }
 
         loadRecyclerView()
