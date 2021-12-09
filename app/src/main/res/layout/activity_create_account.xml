@@ -186,6 +186,7 @@
             android:clickable="true"
             android:gravity="center"
             android:minHeight="48dp"
+            android:textColor="@color/purple_500"
             android:text="Vous avez déjà un compte?"
             android:textSize="@dimen/small_font"
             app:layout_constraintBottom_toBottomOf="parent"

@@ -85,6 +85,7 @@
         android:id="@+id/createAccountText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/purple_500"
         android:clickable="true"
         android:text="Vous n'avez pas de compte?"
         android:textSize="@dimen/small_font"
