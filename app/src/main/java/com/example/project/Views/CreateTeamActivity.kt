@@ -21,19 +21,18 @@ class CreateTeamActivity : AppCompatActivity() {
 
         val createTeamBtn: Button = findViewById(R.id.createTeamBtn)
         val name: EditText = findViewById(R.id.teamNameInput)
-        val mySpinner: Spinner = findViewById(R.id.catergorySpinner)
-        val level = mySpinner.selectedItem.toString()
-
+        val mySpinner: Spinner = findViewById(R.id.categorySpinner)
+        val category = mySpinner.selectedItem.toString()
+        println(category)
         createTeamBtn.setOnClickListener {
             if (validEntry) {
                 val code = generateCode()
-                MainController.instance.insertTeam(name.text.toString(), level, code)
+                MainController.instance.insertTeam(name.text.toString(), category, code)
                 MainController.instance.insertTeamUser(code)
                 val intent = Intent(this, AccountActivity::class.java)
                 startActivity(intent)
             }
         }
-
     }
 
     private fun generateCode(): String {

@@ -14,6 +14,7 @@ class TeamsListAdapter(private var list: ArrayList<Teams>) :
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val name: TextView = view.findViewById(R.id.teamName)
+        val category: TextView = view.findViewById(R.id.teamLevel)
         val button: Button = view.findViewById(R.id.teamButton)
     }
 
@@ -26,6 +27,7 @@ class TeamsListAdapter(private var list: ArrayList<Teams>) :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val current = list[position]
         holder.name.text = current.name
+        holder.category.text = current.category
         holder.button.setOnClickListener {
             launchTeamInfo(current.id)
         }

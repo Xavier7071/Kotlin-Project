@@ -53,21 +53,15 @@ class MainController private constructor() {
         }
     }
 
-    fun insertTeam(name: String, level : String, code : String) {
-        val id = database!!.databaseDAO().findAllUsers().lastIndex + 2
+    fun insertTeam(name: String, category : String, code : String) {
         database!!.databaseDAO().insertTeam(
             Teams (
-                id,
+                database!!.databaseDAO().findAllTeams().lastIndex + 2,
                 name,
-                level,
+                category,
                 code
             )
         )
-        if (isPlayer) {
-            database!!.databaseDAO().insertPlayer(Players(database!!.databaseDAO().findAllPlayers().lastIndex + 2, id))
-        } else {
-            database!!.databaseDAO().insertCoach(Coaches(database!!.databaseDAO().findAllCoaches().lastIndex + 2, id))
-        }
     }
 
     fun getId(): Int {

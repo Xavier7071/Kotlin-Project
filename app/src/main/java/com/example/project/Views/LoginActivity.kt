@@ -47,6 +47,8 @@ class LoginActivity : AppCompatActivity() {
                 MainController.instance.setId(user.id)
                 if (MainController.instance.getPlayerById(user.id).isEmpty()) {
                     MainController.instance.setUserType(false)
+                } else {
+                    MainController.instance.setUserType(true)
                 }
                 val intent = Intent(this, AccountActivity::class.java)
                 startActivity(intent)
