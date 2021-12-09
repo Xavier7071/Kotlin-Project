@@ -45,6 +45,9 @@ class LoginActivity : AppCompatActivity() {
                 Toast.makeText(this, "Mot de passe invalide", Toast.LENGTH_SHORT).show()
             } else {
                 MainController.instance.setId(user.id)
+                if (MainController.instance.getPlayerById(user.id).isEmpty()) {
+                    MainController.instance.setUserType(false)
+                }
                 val intent = Intent(this, AccountActivity::class.java)
                 startActivity(intent)
             }

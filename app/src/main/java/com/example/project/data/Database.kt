@@ -50,6 +50,9 @@ interface Database {
     @Query("SELECT * FROM Teams t WHERE t.code IN (:code)")
     fun findTeamByCode(code: String): List<Teams>
 
+    @Query("SELECT * FROM Players WHERE id IN (:id)")
+    fun findPlayerById(id: Int): List<Players>
+
     @Query("SELECT * FROM Team_User")
     fun findAllTeamUsers(): List<Team_User>
 
