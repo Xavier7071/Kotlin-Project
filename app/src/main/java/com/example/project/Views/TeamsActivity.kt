@@ -1,4 +1,4 @@
-package com.example.project.Views
+package com.example.project.views
 
 import android.os.Bundle
 import android.text.Editable
@@ -8,11 +8,9 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.project.R
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import android.content.Intent
 import android.os.StrictMode.VmPolicy
 
 import android.os.StrictMode
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.project.adapter.TeamsListAdapter

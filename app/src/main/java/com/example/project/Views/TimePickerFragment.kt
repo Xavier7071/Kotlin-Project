@@ -1,4 +1,4 @@
-package com.example.project.Views
+package com.example.project.views
 
 import android.app.Dialog
 import android.app.TimePickerDialog

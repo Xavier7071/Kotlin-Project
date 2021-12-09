@@ -1,11 +1,9 @@
-package com.example.project.Views
+package com.example.project.views
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.Spinner
-import android.widget.TextView
 import com.example.project.R
 
 class CreateGameActivity : AppCompatActivity() {
