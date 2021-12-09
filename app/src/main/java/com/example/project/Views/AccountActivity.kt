@@ -17,12 +17,12 @@ import com.example.project.adapter.TeamsListAdapter
 import com.example.project.controllers.MainController
 
 
-class TeamsActivity : AppCompatActivity() {
+class AccountActivity : AppCompatActivity() {
     private lateinit var rvMain: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_teams2)
+        setContentView(R.layout.account_recycler_view)
         StrictMode.setVmPolicy(
             VmPolicy.Builder()
                 .detectLeakedClosableObjects()
@@ -42,7 +42,7 @@ class TeamsActivity : AppCompatActivity() {
         val builder = AlertDialog.Builder(this)
         val inflater = layoutInflater
         builder.setTitle("Code de l'équipe")
-        val dialogLayout = inflater.inflate(R.layout.alert_dialog_with_edittext, null)
+        val dialogLayout = inflater.inflate(R.layout.modal_alert, null)
         val codeInput  = dialogLayout.findViewById<EditText>(R.id.codeInput).text
         builder.setView(dialogLayout)
         builder.setPositiveButton("Ajouter") { dialogInterface, i -> addInfo(codeInput)}

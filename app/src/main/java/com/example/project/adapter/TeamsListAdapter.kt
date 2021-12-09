@@ -21,7 +21,7 @@ class TeamsListAdapter(private var list: ArrayList<Teams>) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.team_info_for_list, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.team_info_layout, parent, false)
         )
     }
 
