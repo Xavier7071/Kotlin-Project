@@ -104,4 +104,11 @@ class MainController private constructor() {
         teamList.addAll(database!!.databaseDAO().findTeamsById(currentId))
         return teamList
     }
+
+    fun validateTeamExists(code: String): Boolean {
+        if (database!!.databaseDAO().findTeamByCode(code).isEmpty()) {
+            return false;
+        }
+        return true;
+    }
 }
