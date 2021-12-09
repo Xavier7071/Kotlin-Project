@@ -3,14 +3,9 @@ package com.example.project.views
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.*
 import com.example.project.R
 import com.example.project.controllers.MainController
-import android.widget.RadioGroup
-
-
-
 
 class CreateAccountActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,12 +49,12 @@ class CreateAccountActivity : AppCompatActivity() {
             Toast.makeText(this, "Un compte existe avec ce numéro de téléphone", Toast.LENGTH_SHORT).show()
         } else if (password.text.toString() != confirmPassword.text.toString()) {
             Toast.makeText(this, "Le mot de passe de confirmation est différent du mot de passe entré", Toast.LENGTH_SHORT).show()
+        } else if (!email.text.contains("@")) {
+            Toast.makeText(this, "Il faut un @ dans le courriel", Toast.LENGTH_SHORT).show()
         } else {
-            if (email.text.contains("@")) {
-                MainController.instance.insertUser(name.text.toString(), email.text.toString(), password.text.toString(), phoneNumber.text.toString(), findViewById<RadioButton>(R.id.playerBtn).isChecked)
-                val intent = Intent(this, LoginActivity::class.java)
-                startActivity(intent)
-            }
+            MainController.instance.insertUser(name.text.toString(), email.text.toString(), password.text.toString(), phoneNumber.text.toString(), findViewById<RadioButton>(R.id.playerBtn).isChecked)
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
         }
     }
 }

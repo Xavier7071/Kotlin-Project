@@ -2,7 +2,6 @@ package com.example.project.views
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Spinner
@@ -46,15 +45,9 @@ class CreateTeamActivity : AppCompatActivity() {
             stringBuilder.append(availableChar[index])
         }
         val randomCode = stringBuilder.toString()
-        Log.v("test", randomCode)
-
-        if (!isValidCode(randomCode)) {
+        if (MainController.instance.validateTeamExists(randomCode)) {
             generateCode()
         }
         return randomCode
-    }
-
-    private fun isValidCode(code: String): Boolean {
-        return !MainController.instance.validateTeamExists(code) // car il regarde si l'équipe existe
     }
 }

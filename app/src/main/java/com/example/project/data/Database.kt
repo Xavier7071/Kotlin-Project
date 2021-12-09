@@ -11,19 +11,19 @@ interface Database {
     fun insertAllUsers(users: List<Users>)
 
     @Insert
-    fun insertUser(user : Users)
+    fun insertUser(user: Users)
 
     @Insert
     fun insertAllPlayers(users: List<Players>)
 
     @Insert
-    fun insertPlayer(player : Players)
+    fun insertPlayer(player: Players)
 
     @Insert
     fun insertAllCoaches(users: List<Coaches>)
 
     @Insert
-    fun insertCoach(coach : Coaches)
+    fun insertCoach(coach: Coaches)
 
     @Insert
     fun insertAllGames(users: List<Game>)
@@ -35,7 +35,7 @@ interface Database {
     fun insertAllTeamUsers(users: List<Team_User>)
 
     @Insert
-    fun insertTeam(Team : Teams)
+    fun insertTeam(Team: Teams)
 
     @Insert
     fun insertAllTeams(users: List<Teams>)
@@ -48,7 +48,6 @@ interface Database {
 
     @Query("SELECT * FROM Teams t JOIN Team_User tp ON tp.team_id = t.id WHERE tp.user_id IN (:id)")
     fun findTeamsById(id: Int): List<Teams>
-
 
     @Query("SELECT * FROM Teams t WHERE t.code IN (:code)")
     fun findTeamByCode(code: String): List<Teams>
