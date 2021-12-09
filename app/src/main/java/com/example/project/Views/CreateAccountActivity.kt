@@ -3,9 +3,14 @@ package com.example.project.views
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.*
 import com.example.project.R
 import com.example.project.controllers.MainController
+import android.widget.RadioGroup
+
+
+
 
 class CreateAccountActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,10 +54,25 @@ class CreateAccountActivity : AppCompatActivity() {
         } else if (password.text.toString() != confirmPassword.text.toString()) {
             Toast.makeText(this, "Le mot de passe de confirmation est différent du mot de passe entré", Toast.LENGTH_SHORT).show()
         } else {
-            // si c'est un joueur, on va l'insert icitte dans players ou sinon dans coaches selon l'ID du insert user
-            MainController.instance.insertUser(name.text.toString(), email.text.toString(), password.text.toString(), phoneNumber.text.toString())
-            val intent = Intent(this, LoginActivity::class.java)
-            startActivity(intent)
+            if (email.text.contains("@")) {
+                MainController.instance.insertUser(name.text.toString(), email.text.toString(), password.text.toString(), phoneNumber.text.toString())
+
+
+                val rg = findViewById<View>(R.id.accountType) as RadioGroup
+
+                rg.setOnCheckedChangeListener { group, checkedId ->
+                    when (checkedId) {
+                        R.id.player -> {
+                        }
+                        R.id.coach -> {
+                        }
+                    }
+                }
+
+
+                val intent = Intent(this, LoginActivity::class.java)
+                startActivity(intent)
+            }
         }
     }
 }
