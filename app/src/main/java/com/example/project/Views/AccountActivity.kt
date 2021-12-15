@@ -28,9 +28,7 @@ class AccountActivity : AppCompatActivity() {
                 val intent = Intent(this, CreateTeamActivity::class.java)
                 startActivity(intent)
             }
-
         }
-
         loadRecyclerView()
     }
 
