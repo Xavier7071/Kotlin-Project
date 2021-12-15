@@ -13,6 +13,7 @@ class TeamInfosActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_team_infos)
         val currentTeamName = MainController.instance.getTeamById().name
-
+        val teamNameTextView: TextView = findViewById(R.id.teamNameView)
+        teamNameTextView.text = currentTeamName
     }
 }
