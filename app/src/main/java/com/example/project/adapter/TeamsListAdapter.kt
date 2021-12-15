@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.project.R
 import com.example.project.controllers.MainController
 import com.example.project.models.Teams
-import com.example.project.views.CreateGameActivity
 import com.example.project.views.TeamInfosActivity
 
 class TeamsListAdapter(private var list: ArrayList<Teams>) :
