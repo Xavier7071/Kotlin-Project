@@ -23,6 +23,7 @@
         android:id="@+id/gameLocationSpinner"
         android:layout_width="248dp"
         android:layout_height="50dp"
+        android:entries="@array/locationArray"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.901"
@@ -42,44 +43,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.377" />
 
-    <EditText
-        android:id="@+id/editTextTime"
-        android:layout_width="248dp"
-        android:layout_height="50dp"
-        android:ems="10"
-        android:inputType="time"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.901"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.643" />
-
-    <TextView
-        android:id="@+id/textView25"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Heure:"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.043"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.636" />
-
-    <TextView
-        android:id="@+id/textView26"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Écrire l'heure sous forme 24h"
-        android:textSize="@dimen/very_small_font"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.519"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.694" />
-
     <TextView
         android:id="@+id/textView23"
         android:layout_width="wrap_content"
@@ -96,6 +59,7 @@
         android:id="@+id/opponentSpinner"
         android:layout_width="248dp"
         android:layout_height="50dp"
+        android:entries="@array/opponentArray"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.901"
@@ -104,7 +68,7 @@
         app:layout_constraintVertical_bias="0.374" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/createGameBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Créer"
@@ -119,7 +83,7 @@
         android:id="@+id/datePickerBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Heure"
+        android:text="Date"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.455"

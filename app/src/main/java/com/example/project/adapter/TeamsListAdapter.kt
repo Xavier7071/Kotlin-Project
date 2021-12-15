@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.project.R
+import com.example.project.controllers.MainController
 import com.example.project.models.Teams
 
 class TeamsListAdapter(private var list: ArrayList<Teams>) :
@@ -38,6 +39,7 @@ class TeamsListAdapter(private var list: ArrayList<Teams>) :
     }
 
     private fun launchTeamInfo(id: Int) {
+        MainController.instance.setTeamId(id)
         //launch icitte l'activité de l'équipe avec l'id de l'équipe pour le query
     }
 }

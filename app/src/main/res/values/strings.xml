@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Project</string>
 
-    <string-array name="catergoryArray">
+    <string-array name="categoryArray">
         <item>AAA</item>
         <item>AA</item>
         <item>BB</item>
@@ -11,9 +11,9 @@
         <item>Autre</item>
     </string-array>
 
-    <string-array name="arenaLocalisationArray">
+    <string-array name="locationArray">
         <item>Colisée Cardin</item>
-        <item>Arena st-Joseph</item>
+        <item>Arena St-Joseph</item>
         <item>Arena de Contrecoeur</item>
     </string-array>
 

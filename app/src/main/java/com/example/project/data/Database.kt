@@ -43,11 +43,17 @@ interface Database {
     @Insert
     fun insertTeamUser(teamUser: Team_User)
 
+    @Insert
+    fun insertGame(game: Game)
+
     @Query("SELECT * FROM Users")
     fun findAllUsers(): List<Users>
 
     @Query("SELECT * FROM Teams")
     fun findAllTeams(): List<Teams>
+
+    @Query("SELECT * FROM Teams WHERE id != :id")
+    fun findOtherTeams(id: Int): List<Teams>
 
     @Query("SELECT * FROM Teams t JOIN Team_User tp ON tp.team_id = t.id WHERE tp.user_id IN (:id)")
     fun findTeamsById(id: Int): List<Teams>
@@ -67,4 +73,7 @@ interface Database {
 
     @Query("SELECT * FROM Coaches")
     fun findAllCoaches(): List<Coaches>
+
+    @Query("SELECT * FROM Game")
+    fun findAllGames(): List<Game>
 }
