@@ -6,18 +6,26 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.example.project.R
 import com.example.project.controllers.MainController
+import com.example.project.models.Teams
 import java.util.*
+import kotlin.collections.ArrayList
 
 class CreateGameActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_game)
 
+        val teamsArray : ArrayList<Teams> = MainController.instance.getOtherTeams()
+        val teamNames : ArrayList<String> = ArrayList()
+        teamsArray.forEach {
+            teamNames.add(it.name)
+        }
+
         val opponentSpinner: Spinner = findViewById(R.id.opponentSpinner)
         opponentSpinner.adapter = ArrayAdapter(
             this,
             android.R.layout.simple_spinner_item,
-            MainController.instance.getOtherTeams()
+            teamNames
         )
 
         val createGameBtn: Button = findViewById(R.id.createGameBtn)
@@ -38,7 +46,7 @@ class CreateGameActivity : AppCompatActivity() {
         val location = locationSpinner.selectedItem.toString()
         val opponent = opponentSpinner.selectedItem.toString()
 
-        MainController.instance.insertGame(MainController.instance.getTeamById(opponent), location, date = Date())
+        MainController.instance.insertGame(MainController.instance.getTeamByName(opponent), location, date = Date())
 
         val intent = Intent(this, AccountActivity::class.java)
         startActivity(intent)
