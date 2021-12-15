@@ -143,8 +143,12 @@ class MainController private constructor() {
         teamId = id
     }
 
-    fun getTeamById(name: String): Int {
-        return database!!.databaseDAO().findTeamById(name)
+    fun getTeamByName(name: String): Int {
+        return database!!.databaseDAO().findTeamByName(name)
+    }
+
+    fun getTeamById(): Teams {
+        return database!!.databaseDAO().findTeamById(teamId)
     }
 
     private fun getTeamByCode(code: String): ArrayList<Teams> {

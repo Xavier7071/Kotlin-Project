@@ -68,7 +68,10 @@ interface Database {
     fun findAllTeamUsers(): List<Team_User>
 
     @Query("SELECT id FROM Teams WHERE name = :name")
-    fun findTeamById(name: String): Int
+    fun findTeamByName(name: String): Int
+
+    @Query("SELECT * FROM Teams WHERE id = :id")
+    fun findTeamById(id: Int): Teams
 
     @Query("SELECT * FROM Players")
     fun findAllPlayers(): List<Players>
