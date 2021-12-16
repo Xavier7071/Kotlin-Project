@@ -11,9 +11,9 @@ class GameInfoActivity : AppCompatActivity() {
         setContentView(R.layout.activity_game_info)
 
         val game = MainController.instance.getGameById(MainController.instance.getGameId())
+        MainController.instance.getId()
 
-        val player = MainController.instance.getPlayerById(MainController.instance.getId())
-        player.get(0)
+
 
     }
 }
