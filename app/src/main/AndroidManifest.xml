@@ -16,16 +16,10 @@
             android:name=".views.GameInfoActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
-            android:exported="false" />
-        <activity
             android:name=".views.CreateGameActivity"
             android:exported="false" />
         <activity
             android:name=".views.PlayersListActivity"
-            android:exported="false" />
-        <activity
-            android:name=".views.PlayerList"
             android:exported="false" />
         <activity
             android:name=".views.CreateTeamActivity"
