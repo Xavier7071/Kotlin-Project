@@ -18,14 +18,11 @@ class LoginActivity : AppCompatActivity() {
 
         MainController.instance.loadDatabase(applicationContext)
 
-        val connectBtn: Button = findViewById(R.id.createBtn)
-        val createAccountTextBtn: TextView = findViewById(R.id.createAccountText)
 
-        connectBtn.setOnClickListener {
+        findViewById<Button>(R.id.createBtn).setOnClickListener {
             connection()
         }
-
-        createAccountTextBtn.setOnClickListener {
+        findViewById<TextView>(R.id.createAccountText).setOnClickListener {
             val intent = Intent(this, CreateAccountActivity::class.java)
             startActivity(intent)
         }

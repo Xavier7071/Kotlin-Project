@@ -12,7 +12,6 @@ import com.example.project.adapter.TeamsListAdapter
 import com.example.project.controllers.MainController
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
-
 class AccountActivity : AppCompatActivity() {
     private lateinit var rvMain: RecyclerView
 
@@ -20,8 +19,7 @@ class AccountActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.account_activity)
 
-        val addTeamBtn: FloatingActionButton = findViewById(R.id.addTeamBtn)
-        addTeamBtn.setOnClickListener {
+        findViewById<FloatingActionButton>(R.id.addTeamBtn).setOnClickListener {
             if (MainController.instance.getIsPlayer()) {
                 dialogAlert()
             } else {

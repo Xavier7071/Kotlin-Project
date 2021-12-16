@@ -29,22 +29,22 @@ interface Database {
     fun insertAllGames(users: List<Game>)
 
     @Insert
+    fun insertGame(game: Game)
+
+    @Insert
     fun insertAllGameUsers(users: List<Game_User>)
 
     @Insert
     fun insertAllTeamUsers(users: List<Team_User>)
 
     @Insert
-    fun insertTeam(Team: Teams)
+    fun insertTeamUser(teamUser: Team_User)
 
     @Insert
     fun insertAllTeams(users: List<Teams>)
 
     @Insert
-    fun insertTeamUser(teamUser: Team_User)
-
-    @Insert
-    fun insertGame(game: Game)
+    fun insertTeam(Team: Teams)
 
     @Query("SELECT * FROM Users")
     fun findAllUsers(): List<Users>
@@ -52,8 +52,11 @@ interface Database {
     @Query("SELECT * FROM Teams")
     fun findAllTeams(): List<Teams>
 
-    @Query("SELECT * FROM Teams WHERE id != :id")
-    fun findOtherTeams(id: Int): List<Teams>
+    @Query("SELECT * FROM Teams WHERE id IN (:id)")
+    fun findTeamById(id: Int): Teams
+
+    @Query("SELECT id FROM Teams WHERE name = :name")
+    fun findTeamByName(name: String): Int
 
     @Query("SELECT * FROM Teams t JOIN Team_User tp ON tp.team_id = t.id WHERE tp.user_id IN (:id)")
     fun findTeamsById(id: Int): List<Teams>
@@ -61,35 +64,32 @@ interface Database {
     @Query("SELECT * FROM Teams t WHERE t.code IN (:code)")
     fun findTeamByCode(code: String): List<Teams>
 
-    @Query("SELECT * FROM Players WHERE user_id IN (:id)")
-    fun findPlayerById(id: Int): List<Players>
+    @Query("SELECT * FROM Teams WHERE id != :id")
+    fun findOtherTeams(id: Int): List<Teams>
 
     @Query("SELECT * FROM Team_User")
     fun findAllTeamUsers(): List<Team_User>
 
-    @Query("SELECT id FROM Teams WHERE name = :name")
-    fun findTeamByName(name: String): Int
-
-    @Query("SELECT * FROM Game WHERE firstTeam IN (:id)")
-    fun findGamesByTeam(id: Int): List<Game>
-
-    @Query("SELECT u.name FROM Users u JOIN Team_User tu ON u.id = tu.user_id JOIN Coaches c ON c.user_id = u.id WHERE tu.team_id IN (:id)")
-    fun findCoachByTeamId(id: Int): String
+    @Query("SELECT * FROM Players")
+    fun findAllPlayers(): List<Players>
 
     @Query("SELECT * FROM Users u JOIN Players p ON u.id = p.user_id JOIN Team_User tu ON tu.user_id = u.id WHERE tu.team_id IN (:id)")
     fun findPlayersByTeam(id: Int): List<Users>
 
-    @Query("SELECT * FROM Teams WHERE id IN (:id)")
-    fun findTeamById(id: Int): Teams
-
-    @Query("SELECT * FROM Players")
-    fun findAllPlayers(): List<Players>
+    @Query("SELECT * FROM Players WHERE user_id IN (:id)")
+    fun findPlayerById(id: Int): List<Players>
 
     @Query("SELECT * FROM Coaches")
     fun findAllCoaches(): List<Coaches>
 
+    @Query("SELECT u.name FROM Users u JOIN Team_User tu ON u.id = tu.user_id JOIN Coaches c ON c.user_id = u.id WHERE tu.team_id IN (:id)")
+    fun findCoachByTeamId(id: Int): String
+
     @Query("SELECT * FROM Game")
     fun findAllGames(): List<Game>
+
+    @Query("SELECT * FROM Game WHERE firstTeam IN (:id)")
+    fun findGamesByTeam(id: Int): List<Game>
 
     @Query("SELECT * FROM Game WHERE id IN (:id)")
     fun findGameById(id: Int): Game

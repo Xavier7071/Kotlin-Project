@@ -18,22 +18,15 @@ class CreateAccountActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_account)
 
-        val takePictureBtn: TextView = findViewById(R.id.takePictureBtn)
-
-        val loginTextBtn: TextView = findViewById(R.id.loginText)
-        val createBtn: Button = findViewById(R.id.createBtn)
         findViewById<RadioButton>(R.id.playerBtn).isChecked = true
-
-        createBtn.setOnClickListener {
+        findViewById<Button>(R.id.createBtn).setOnClickListener {
             createAccount()
         }
-
-        loginTextBtn.setOnClickListener {
+        findViewById<TextView>(R.id.loginText).setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
-
-        takePictureBtn.setOnClickListener {
+        findViewById<TextView>(R.id.takePictureBtn).setOnClickListener {
             val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
             startActivityForResult(intent, CAMERA_REQUEST_CODE)
         }

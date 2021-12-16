@@ -34,8 +34,7 @@ class TeamActivity : AppCompatActivity() {
             }
         }
 
-        val playersListBtn: Button = findViewById(R.id.playersListBtn)
-        playersListBtn.setOnClickListener {
+        findViewById<Button>(R.id.playersListBtn).setOnClickListener {
             val intent = Intent(this, PlayersListActivity::class.java)
             startActivity(intent)
         }

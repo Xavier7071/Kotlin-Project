@@ -29,20 +29,17 @@ class CreateGameActivity : AppCompatActivity() {
             teamNames.add(it.name)
         }
 
-        val opponentSpinner: Spinner = findViewById(R.id.opponentSpinner)
-        opponentSpinner.adapter = ArrayAdapter(
+        findViewById<Spinner>(R.id.opponentSpinner).adapter = ArrayAdapter(
             this,
             android.R.layout.simple_spinner_item,
             teamNames
         )
-
-        val createGameBtn: Button = findViewById(R.id.createGameBtn)
-        createGameBtn.setOnClickListener {
+        findViewById<Button>(R.id.createGameBtn).setOnClickListener {
             validateGameInfo()
         }
-        val datePicker = findViewById<DatePicker>(R.id.datePicker)
+
         val today = Calendar.getInstance()
-        datePicker.init(
+        findViewById<DatePicker>(R.id.datePicker).init(
             today.get(Calendar.YEAR), today.get(Calendar.MONTH),
             today.get(Calendar.DAY_OF_MONTH)
         ) { _, year, month, day ->
@@ -53,10 +50,8 @@ class CreateGameActivity : AppCompatActivity() {
     }
 
     private fun validateGameInfo() {
-        val locationSpinner: Spinner = findViewById(R.id.gameLocationSpinner)
-        val opponentSpinner: Spinner = findViewById(R.id.opponentSpinner)
-        val location = locationSpinner.selectedItem.toString()
-        val opponent = opponentSpinner.selectedItem.toString()
+        val location = findViewById<Spinner>(R.id.gameLocationSpinner).selectedItem.toString()
+        val opponent = findViewById<Spinner>(R.id.opponentSpinner).selectedItem.toString()
         val date = Date()
         date.year = savedYear - 1900
         date.month = savedMonth

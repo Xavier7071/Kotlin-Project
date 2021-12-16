@@ -17,19 +17,18 @@ class CreateTeamActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_team)
 
-        val createTeamBtn: Button = findViewById(R.id.createTeamBtn)
-        createTeamBtn.setOnClickListener {
+        findViewById<Button>(R.id.createTeamBtn).setOnClickListener {
             validateTeamInfo()
         }
     }
 
     private fun validateTeamInfo() {
         val name: EditText = findViewById(R.id.teamNameInput)
-        val mySpinner: Spinner = findViewById(R.id.categorySpinner)
+        val categorySpinner: Spinner = findViewById(R.id.categorySpinner)
         if (name.text.toString().isEmpty()) {
             Toast.makeText(this, "Veuillez entrer un nom d'équipe", Toast.LENGTH_SHORT).show()
         } else {
-            val category = mySpinner.selectedItem.toString()
+            val category = categorySpinner.selectedItem.toString()
             val code = generateCode()
             MainController.instance.insertTeam(name.text.toString(), category, code)
             MainController.instance.insertTeamUser(code)
