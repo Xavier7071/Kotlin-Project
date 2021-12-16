@@ -31,6 +31,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <RadioGroup
+        android:id="@+id/radioGroup"
         android:layout_width="289dp"
         android:layout_height="56dp"
         android:gravity="center"
@@ -43,7 +44,7 @@
         app:layout_constraintVertical_bias="0.284">
 
         <RadioButton
-            android:id="@+id/radioButton"
+            android:id="@+id/presentButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -78,4 +79,13 @@
         app:layout_constraintHorizontal_bias="0.457"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="389dp"
+        android:layout_height="438dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.945" />
 </androidx.constraintlayout.widget.ConstraintLayout>
