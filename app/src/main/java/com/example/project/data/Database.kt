@@ -70,7 +70,16 @@ interface Database {
     @Query("SELECT id FROM Teams WHERE name = :name")
     fun findTeamByName(name: String): Int
 
-    @Query("SELECT * FROM Teams WHERE id = :id")
+    @Query("SELECT * FROM Game WHERE firstTeam IN (:id)")
+    fun findGamesByTeam(id: Int): List<Game>
+
+    @Query("SELECT u.name FROM Users u JOIN Team_User tu ON u.id = tu.user_id JOIN Coaches c ON c.user_id = u.id WHERE tu.team_id IN (:id)")
+    fun findCoachByTeamId(id: Int): String
+
+    @Query("SELECT * FROM Users u JOIN Players p ON u.id = p.user_id JOIN Team_User tu ON tu.user_id = u.id WHERE tu.team_id IN (:id)")
+    fun findPlayersByTeam(id: Int): List<Users>
+
+    @Query("SELECT * FROM Teams WHERE id IN (:id)")
     fun findTeamById(id: Int): Teams
 
     @Query("SELECT * FROM Players")

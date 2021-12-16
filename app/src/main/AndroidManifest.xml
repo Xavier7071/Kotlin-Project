@@ -13,10 +13,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Project">
         <activity
+            android:name=".views.GameInfoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+        <activity
             android:name=".views.CreateGameActivity"
             android:exported="false" />
         <activity
-            android:name=".views.TeamInfosActivity"
+            android:name=".views.PlayersListActivity"
             android:exported="false" />
         <activity
             android:name=".views.PlayerList"

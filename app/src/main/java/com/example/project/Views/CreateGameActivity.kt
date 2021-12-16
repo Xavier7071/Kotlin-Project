@@ -67,7 +67,7 @@ class CreateGameActivity : AppCompatActivity() {
             date
         )
 
-        val intent = Intent(this, AccountActivity::class.java)
+        val intent = Intent(this, TeamActivity::class.java)
         startActivity(intent)
     }
 }

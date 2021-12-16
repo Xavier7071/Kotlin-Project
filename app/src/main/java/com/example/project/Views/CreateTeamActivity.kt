@@ -42,7 +42,7 @@ class CreateTeamActivity : AppCompatActivity() {
         val availableChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
         val stringBuilder = StringBuilder()
         val rnd = Random()
-        while (stringBuilder.length < 6) {
+        while (stringBuilder.length < 4) {
             val index = (rnd.nextFloat() * availableChar.length).toInt()
             stringBuilder.append(availableChar[index])
         }

@@ -53,7 +53,7 @@ class AccountActivity : AppCompatActivity() {
 
     private fun loadRecyclerView() {
         rvMain = findViewById(R.id.teamList)
-        rvMain.adapter = TeamsListAdapter(MainController.instance.getTeams())
+        rvMain.adapter = TeamsListAdapter(MainController.instance.getTeams(), MainController.instance.getIsPlayer())
         rvMain.layoutManager = LinearLayoutManager(this)
     }
 }

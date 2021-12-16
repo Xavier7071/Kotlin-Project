@@ -1,6 +1,7 @@
 package com.example.project.controllers
 
 import android.content.Context
+import android.graphics.Bitmap
 import androidx.room.Room
 import com.example.project.models.*
 import java.util.*
@@ -18,6 +19,7 @@ class MainController private constructor() {
     private var currentId = 0
     private var isPlayer = true
     private var teamId = 0
+    private var gameId = 0
 
     private object HOLDER {
         val INSTANCE = MainController()
@@ -43,31 +45,32 @@ class MainController private constructor() {
         email: String,
         password: String,
         phoneNumber: String,
-        isPlayer: Boolean
+        isPlayer: Boolean,
+        image: Bitmap
     ) {
-        val id = database!!.databaseDAO().findAllUsers().lastIndex + 2
         database!!.databaseDAO().insertUser(
             Users(
-                id,
+                0,
                 name,
                 email,
                 password,
+                image,
                 phoneNumber
             )
         )
         if (isPlayer) {
             database!!.databaseDAO()
-                .insertPlayer(Players(database!!.databaseDAO().findAllPlayers().lastIndex + 2, id))
+                .insertPlayer(Players(0, database!!.databaseDAO().findAllUsers().lastIndex + 1))
         } else {
             database!!.databaseDAO()
-                .insertCoach(Coaches(database!!.databaseDAO().findAllCoaches().lastIndex + 2, id))
+                .insertCoach(Coaches(0, database!!.databaseDAO().findAllUsers().lastIndex + 1))
         }
     }
 
     fun insertTeam(name: String, category: String, code: String) {
         database!!.databaseDAO().insertTeam(
             Teams(
-                database!!.databaseDAO().findAllTeams().lastIndex + 2,
+                0,
                 name,
                 category,
                 code
@@ -114,7 +117,7 @@ class MainController private constructor() {
         val team = getTeamByCode(code)
         database!!.databaseDAO().insertTeamUser(
             Team_User(
-                database!!.databaseDAO().findAllTeamUsers().lastIndex + 2,
+                0,
                 currentId,
                 team[0].id
             )
@@ -124,7 +127,7 @@ class MainController private constructor() {
     fun insertGame(opponentId: Int, location: String, date: Date) {
         database!!.databaseDAO().insertGame(
             Game(
-                database!!.databaseDAO().findAllGames().lastIndex + 2,
+                0,
                 teamId,
                 opponentId,
                 location,
@@ -143,12 +146,32 @@ class MainController private constructor() {
         teamId = id
     }
 
+    fun setGameId(id: Int) {
+        gameId = id
+    }
+
     fun getTeamByName(name: String): Int {
         return database!!.databaseDAO().findTeamByName(name)
     }
 
     fun getTeamById(): Teams {
         return database!!.databaseDAO().findTeamById(teamId)
+    }
+
+    fun getGamesFromTeam(): ArrayList<Game> {
+        gameList.clear()
+        gameList.addAll(database!!.databaseDAO().findGamesByTeam(teamId))
+        return gameList
+    }
+
+    fun getPlayersFromTeam(): ArrayList<Users> {
+        userList.clear()
+        userList.addAll(database!!.databaseDAO().findPlayersByTeam(teamId))
+        return userList
+    }
+
+    fun getCoach(): String {
+        return database!!.databaseDAO().findCoachByTeamId(teamId)
     }
 
     private fun getTeamByCode(code: String): ArrayList<Teams> {
