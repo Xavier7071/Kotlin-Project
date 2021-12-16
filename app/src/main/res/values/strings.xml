@@ -1,5 +1,40 @@
 <resources>
     <string name="app_name">Project</string>
+    <string name="your_teams">Vos équipes</string>
+    <string name="confirm_password">Confirmer mot de passe</string>
+    <string name="create_account">Créer un compte</string>
+    <string name="email">Courriel</string>
+    <string name="password">Mot de passe</string>
+    <string name="phone">Téléphone</string>
+    <string name="profile_picture">Photo de profil</string>
+    <string name="name">Nom</string>
+    <string name="create_account">Créer un compte</string>
+    <string name="already_have_account">Vous avez déjà un compte?</string>
+    <string name="player">Joueur</string>
+    <string name="coach">Entraineur</string>
+    <string name="create_game">Création d\'une partie</string>
+    <string name="opponent">Adversaire:</string>
+    <string name="location">Lieu:</string>
+    <string name="create">Créer</string>
+    <string name="create_team">Création de votre équipe</string>
+    <string name="level">Niveau:</string>
+    <string name="team_name">Nom de l\'équipe:</string>
+    <string name="create">Créer</string>
+    <string name="date">Date</string>
+    <string name="there">Présent</string>
+    <string name="not_there">Absent</string>
+    <string name="opponents">Opposant:</string>
+    <string name="connect">Se connecter</string>
+    <string name="password">Mot de passe</string>
+    <string name="email">Courriel</string>
+    <string name="connection">Connexion</string>
+    <string name="no_account">Vous n\'avez pas de compte?</string>
+    <string name="team_players">Joueurs de l\'équipe</string>
+    <string name="trainer">Entraineur:</string>
+    <string name="player_list">Liste des joueurs</string>
+    <string name="details">Détails</string>
+    <string name="enter_code">Veuillez entrer le code</string>
+    <string name="full_name">Nom complet</string>
 
     <string-array name="categoryArray">
         <item>AAA</item>

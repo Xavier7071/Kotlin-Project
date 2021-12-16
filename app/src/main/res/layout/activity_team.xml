@@ -18,13 +18,14 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.976"
         app:srcCompat="@drawable/ic_baseline_add_24"
-        tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+        tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck"
+        android:focusable="true" />
 
     <TextView
         android:id="@+id/teamNameView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nom de l'équipe"
+        android:text="@string/team_name"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -36,7 +37,6 @@
         android:id="@+id/coachNameView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ludo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.263"
@@ -48,7 +48,7 @@
         android:id="@+id/coachNameViewLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Entraineur: "
+        android:text="@string/trainer"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.047"
@@ -70,7 +70,7 @@
         android:id="@+id/playersListBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Liste des joueurs"
+        android:text="@string/player_list"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

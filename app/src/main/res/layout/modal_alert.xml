@@ -12,7 +12,7 @@
         android:layout_marginTop="25dp"
         android:layout_marginRight="40dp"
         android:layout_marginBottom="25dp"
-        android:hint="Veuillez entrer le code"
+        android:hint="@string/enter_code"
         android:minHeight="48dp" />
 
 </LinearLayout>
