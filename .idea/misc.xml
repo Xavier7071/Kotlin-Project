@@ -7,8 +7,10 @@
         <entry key="app/src/main/res/layout/activity_create_account2.xml" value="0.4036458333333333" />
         <entry key="app/src/main/res/layout/activity_create_game.xml" value="0.23020833333333332" />
         <entry key="app/src/main/res/layout/activity_create_team.xml" value="0.3681592039800995" />
+        <entry key="app/src/main/res/layout/activity_game_info.xml" value="0.4036458333333333" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.3423913043478261" />
         <entry key="app/src/main/res/layout/activity_player_list.xml" value="0.3890625" />
+        <entry key="app/src/main/res/layout/activity_players_list.xml" value="0.4036458333333333" />
         <entry key="app/src/main/res/layout/activity_team.xml" value="0.4036458333333333" />
         <entry key="app/src/main/res/layout/activity_team_infos.xml" value="0.4036458333333333" />
         <entry key="app/src/main/res/layout/activity_team_player.xml" value="0.375" />
@@ -20,8 +22,12 @@
         <entry key="app/src/main/res/layout/fragment_gallery.xml" value="0.2203125" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.2203125" />
         <entry key="app/src/main/res/layout/fragment_slideshow.xml" value="0.2203125" />
+        <entry key="app/src/main/res/layout/game_info_layout.xml" value="0.4036458333333333" />
+        <entry key="app/src/main/res/layout/modal_alert.xml" value="0.4036458333333333" />
         <entry key="app/src/main/res/layout/nav_header_teams.xml" value="0.3890625" />
         <entry key="app/src/main/res/layout/player_info_for_list.xml" value="0.3890625" />
+        <entry key="app/src/main/res/layout/player_info_layout.xml" value="0.4036458333333333" />
+        <entry key="app/src/main/res/layout/team_info_coach_layout.xml" value="0.4036458333333333" />
         <entry key="app/src/main/res/layout/team_info_for_list.xml" value="0.3890625" />
         <entry key="app/src/main/res/layout/team_info_layout.xml" value="0.4036458333333333" />
       </map>

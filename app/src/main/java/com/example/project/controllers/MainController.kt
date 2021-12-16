@@ -170,6 +170,14 @@ class MainController private constructor() {
         return userList
     }
 
+    fun getGameId(): Int {
+        return gameId;
+    }
+
+    fun getGameById(id: Int): Game {
+        return database!!.databaseDAO().findGameById(id)
+    }
+
     fun getCoach(): String {
         return database!!.databaseDAO().findCoachByTeamId(teamId)
     }

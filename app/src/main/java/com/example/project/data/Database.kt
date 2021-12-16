@@ -90,4 +90,7 @@ interface Database {
 
     @Query("SELECT * FROM Game")
     fun findAllGames(): List<Game>
+
+    @Query("SELECT * FROM Game WHERE id IN (:id)")
+    fun findGameById(id: Int): Game
 }
