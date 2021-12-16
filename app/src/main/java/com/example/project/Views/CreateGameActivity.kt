@@ -2,7 +2,8 @@ package com.example.project.views
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.DatePicker
@@ -13,7 +14,6 @@ import com.example.project.controllers.MainController
 import com.example.project.models.Teams
 import java.util.*
 import kotlin.collections.ArrayList
-import kotlin.math.log
 
 class CreateGameActivity : AppCompatActivity() {
     private var savedYear: Int = 0
@@ -47,6 +47,27 @@ class CreateGameActivity : AppCompatActivity() {
             savedMonth = month
             savedDay = day
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu, menu)
+        return true
+    }
+
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.action_home -> {
+                val intent = Intent(this, AccountActivity::class.java)
+                startActivity(intent)
+            }
+            R.id.action_disconnect -> {
+                val intent = Intent(this, LoginActivity::class.java)
+                startActivity(intent)
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+        return false
     }
 
     private fun validateGameInfo() {
