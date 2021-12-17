@@ -2,10 +2,17 @@ package com.example.project.controllers
 
 import android.content.Context
 import android.graphics.Bitmap
+import android.util.Log
 import androidx.room.Room
 import com.example.project.models.*
 import java.util.*
 import kotlin.collections.ArrayList
+import android.R.color
+import android.graphics.Canvas
+import android.graphics.Paint
+import androidx.core.graphics.blue
+import java.time.LocalDate
+
 
 class MainController private constructor() {
     private var database: AppDatabase? = null
@@ -30,10 +37,83 @@ class MainController private constructor() {
     }
 
     fun loadDatabase(applicationContext: Context) {
+        val bitmap = Bitmap.createBitmap(25, 25, Bitmap.Config.ARGB_8888)
+        val canvas = Canvas(bitmap)
+        val paint = Paint()
+        paint.color = paint.color.blue
+        canvas.drawRect(0f, 0f, 25.toFloat(), 25.toFloat(), paint)
+        val date = Date()
+        date.year = 2021
+        date.month = 12
+        date.date = 21
+
+        userList.add(Users(1, "Joe", "Joe@hotmail.fr", "joe", bitmap, "4508463611"))
+        userList.add(Users(2, "Xavier", "Xavier@hotmail.fr", "xavier", bitmap, "4507800315"))
+        userList.add(Users(3, "Ludo", "Ludo@hotmail.fr", "ludo", bitmap, "4507263627"))
+        userList.add(Users(4, "Admin", "Admin@hotmail.fr", "admin", bitmap, "4502736263"))
+        userList.add(Users(5, "Roger", "Roger@hotmail.fr", "roger", bitmap, "4502619473"))
+        coachList.add(Coaches(1, 4))
+        coachList.add(Coaches(2, 5))
+        playerList.add(Players(1, 1))
+        playerList.add(Players(2, 2))
+        playerList.add(Players(3, 3))
+        teamList.add(Teams(1, "Mariniers", "AAA", "FG3H"))
+        teamList.add(Teams(2, "Canadiens", "AAA", "K2K3"))
+        teamUserList.add(Team_User(1, 1, 1))
+        teamUserList.add(Team_User(2, 2, 1))
+        teamUserList.add(Team_User(3, 3, 2))
+        teamUserList.add(Team_User(4, 4, 1))
+        teamUserList.add(Team_User(5, 5, 2))
+        gameList.add(Game(1, 1, 2, "Colisée Cardin", date))
+        gameList.add(Game(2, 2, 1, "Arena St-Joseph", date))
+        gameUserList.add(Game_User(1, 1, 1, 1, false))
+        gameUserList.add(Game_User(2, 2, 1, 1, true))
+        gameUserList.add(Game_User(3, 3, 1, 2, true))
+        gameUserList.add(Game_User(4, 1, 2, 1, true))
+        gameUserList.add(Game_User(5, 2, 2, 1, false))
+        gameUserList.add(Game_User(6, 3, 2, 2, true))
+
         database = Room.databaseBuilder(applicationContext, AppDatabase::class.java, "database")
             .allowMainThreadQueries()
             .fallbackToDestructiveMigration()
             .build()
+
+        try {
+            database!!.databaseDAO().insertAllUsers(userList)
+        } catch (ex: Exception) {
+            Log.d("logdemo", "Records already in Database: ${ex.message}")
+        }
+        try {
+            database!!.databaseDAO().insertAllTeams(teamList)
+        } catch (ex: Exception) {
+            Log.d("logdemo", "Records already in Database: ${ex.message}")
+        }
+        try {
+            database!!.databaseDAO().insertAllPlayers(playerList)
+        } catch (ex: Exception) {
+            Log.d("logdemo", "Records already in Database: ${ex.message}")
+        }
+        try {
+            database!!.databaseDAO().insertAllCoaches(coachList)
+        } catch (ex: Exception) {
+            Log.d("logdemo", "Records already in Database: ${ex.message}")
+        }
+        try {
+            database!!.databaseDAO().insertAllGameUsers(gameUserList)
+        } catch (ex: Exception) {
+            Log.d("logdemo", "Records already in Database: ${ex.message}")
+        }
+        try {
+            database!!.databaseDAO().insertAllGames(gameList)
+        } catch (ex: Exception) {
+            Log.d("logdemo", "Records already in Database: ${ex.message}")
+        }
+        try {
+            database!!.databaseDAO().insertAllTeamUsers(teamUserList)
+        } catch (ex: Exception) {
+            Log.d("logdemo", "Records already in Database: ${ex.message}")
+        }
+        println(database!!.databaseDAO().findAllUsers())
     }
 
     fun getDatabase(): AppDatabase? {
@@ -50,7 +130,7 @@ class MainController private constructor() {
     ) {
         database!!.databaseDAO().insertUser(
             Users(
-                0,
+                database!!.databaseDAO().findAllUsers().lastIndex + 2,
                 name,
                 email,
                 password,
@@ -60,17 +140,17 @@ class MainController private constructor() {
         )
         if (isPlayer) {
             database!!.databaseDAO()
-                .insertPlayer(Players(0, database!!.databaseDAO().findAllUsers().lastIndex + 1))
+                .insertPlayer(Players(database!!.databaseDAO().findAllPlayers().lastIndex + 2, database!!.databaseDAO().findAllUsers().lastIndex + 1))
         } else {
             database!!.databaseDAO()
-                .insertCoach(Coaches(0, database!!.databaseDAO().findAllUsers().lastIndex + 1))
+                .insertCoach(Coaches(database!!.databaseDAO().findAllCoaches().lastIndex + 2, database!!.databaseDAO().findAllUsers().lastIndex + 1))
         }
     }
 
     fun insertTeam(name: String, category: String, code: String) {
         database!!.databaseDAO().insertTeam(
             Teams(
-                0,
+                database!!.databaseDAO().findAllTeams().lastIndex + 2,
                 name,
                 category,
                 code
@@ -114,7 +194,7 @@ class MainController private constructor() {
         val team = getTeamByCode(code)
         database!!.databaseDAO().insertTeamUser(
             Team_User(
-                0,
+                database!!.databaseDAO().findAllTeamUsers().lastIndex + 2,
                 currentId,
                 team[0].id
             )
@@ -124,7 +204,7 @@ class MainController private constructor() {
     fun insertGame(opponentId: Int, location: String, date: Date) {
         database!!.databaseDAO().insertGame(
             Game(
-                0,
+                database!!.databaseDAO().findAllGames().lastIndex + 2,
                 teamId,
                 opponentId,
                 location,
@@ -137,7 +217,7 @@ class MainController private constructor() {
         if (database!!.databaseDAO().playerAlreadyExists(currentId, gameId) == null) {
             database!!.databaseDAO().insertGameUser(
                 Game_User(
-                    0,
+                    database!!.databaseDAO().findAllGameUsers().lastIndex + 2,
                     currentId,
                     gameId,
                     teamId,

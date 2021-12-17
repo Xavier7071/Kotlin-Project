@@ -7,9 +7,9 @@ import java.util.*
 
 @Entity(tableName = "Game")
 data class Game(
-    @PrimaryKey(autoGenerate = true) val id: Int,
+    @PrimaryKey val id: Int,
     @ColumnInfo(name = "firstTeam") var firstTeam: Int,
     @ColumnInfo(name = "secondTeam") var secondTeam: Int,
     @ColumnInfo(name = "location") var location: String,
-    @ColumnInfo(name = "date") var date: Date
+    @ColumnInfo(name = "date") var date: Date? = null
 )

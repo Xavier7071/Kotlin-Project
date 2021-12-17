@@ -73,6 +73,9 @@ interface Database {
     @Query("SELECT * FROM Team_User")
     fun findAllTeamUsers(): List<Team_User>
 
+    @Query("SELECT * FROM Game_User")
+    fun findAllGameUsers(): List<Game_User>
+
     @Query("SELECT * FROM Players")
     fun findAllPlayers(): List<Players>
 

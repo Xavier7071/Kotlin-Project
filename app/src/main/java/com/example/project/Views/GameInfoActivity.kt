@@ -24,7 +24,7 @@ class GameInfoActivity : AppCompatActivity() {
         val locationView: TextView = findViewById(R.id.locationView)
         locationView.text = game.location
         val dateView: TextView = findViewById(R.id.dateView)
-        dateView.text = game.date.day.toString() + "/" + game.date.month.toString() + "/" + game.date.year.toString()
+        dateView.text = game.date!!.day.toString() + "/" + game.date!!.month.toString() + "/" + game.date!!.year.toString()
 
         val presentButton: RadioButton = findViewById(R.id.presentButton)
         presentButton.setOnClickListener {
