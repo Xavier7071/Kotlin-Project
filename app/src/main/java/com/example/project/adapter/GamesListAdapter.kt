@@ -32,7 +32,7 @@ class GamesListAdapter(private var list: ArrayList<Game>) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val current = list[position]
-        holder.gameLocation.text = "#" + position + " " + current.location
+        holder.gameLocation.text = current.location
         holder.gameDate.text = current.date.day.toString() + "/" + current.date.month.toString() + "/" + current.date.year.toString()
         holder.button.setOnClickListener {
             launchGameInfo(current.id)

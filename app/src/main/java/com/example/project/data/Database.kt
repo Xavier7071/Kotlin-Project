@@ -35,6 +35,9 @@ interface Database {
     fun insertAllGameUsers(users: List<Game_User>)
 
     @Insert
+    fun insertGameUser(users: Game_User)
+
+    @Insert
     fun insertAllTeamUsers(users: List<Team_User>)
 
     @Insert
@@ -79,6 +82,9 @@ interface Database {
     @Query("SELECT * FROM Players WHERE user_id IN (:id)")
     fun findPlayerById(id: Int): List<Players>
 
+    @Query("SELECT * FROM Game_User WHERE user_id = :playerId AND game_id = :gameId")
+    fun playerAlreadyExists(playerId: Int, gameId: Int): Game_User
+
     @Query("SELECT * FROM Coaches")
     fun findAllCoaches(): List<Coaches>
 
@@ -88,9 +94,15 @@ interface Database {
     @Query("SELECT * FROM Game")
     fun findAllGames(): List<Game>
 
-    @Query("SELECT * FROM Game WHERE firstTeam IN (:id)")
+    @Query("SELECT * FROM Game WHERE firstTeam IN (:id) OR secondTeam IN (:id)")
     fun findGamesByTeam(id: Int): List<Game>
 
     @Query("SELECT * FROM Game WHERE id IN (:id)")
     fun findGameById(id: Int): Game
+
+    @Query("SELECT * FROM Users u JOIN Game_User g ON g.user_id = u.id WHERE team_id = :teamId AND game_id = :gameId")
+    fun findUsersForGame(teamId: Int, gameId: Int): List<Users>
+
+    @Query("SELECT * FROM game_user WHERE game_id = :gameId AND team_id = :teamId")
+    fun findGameUsers(teamId: Int, gameId: Int): List<Game_User>
 }

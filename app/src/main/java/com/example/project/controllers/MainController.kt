@@ -78,10 +78,6 @@ class MainController private constructor() {
         )
     }
 
-    fun getId(): Int {
-        return currentId
-    }
-
     fun setId(id: Int) {
         currentId = id
     }
@@ -97,6 +93,7 @@ class MainController private constructor() {
     fun getTeams(): ArrayList<Teams> {
         teamList.clear()
         teamList.addAll(database!!.databaseDAO().findTeamsById(currentId))
+        println(teamList)
         return teamList
     }
 
@@ -136,6 +133,20 @@ class MainController private constructor() {
         )
     }
 
+    fun insertGameUser(isThere: Boolean) {
+        if (database!!.databaseDAO().playerAlreadyExists(currentId, gameId) == null) {
+            database!!.databaseDAO().insertGameUser(
+                Game_User(
+                    0,
+                    currentId,
+                    gameId,
+                    teamId,
+                    isThere
+                )
+            )
+        }
+    }
+
     fun getPlayerById(id: Int): ArrayList<Players> {
         playerList.clear()
         playerList.addAll(database!!.databaseDAO().findPlayerById(id))
@@ -171,7 +182,7 @@ class MainController private constructor() {
     }
 
     fun getGameId(): Int {
-        return gameId;
+        return gameId
     }
 
     fun getGameById(id: Int): Game {
@@ -180,6 +191,18 @@ class MainController private constructor() {
 
     fun getCoach(): String {
         return database!!.databaseDAO().findCoachByTeamId(teamId)
+    }
+
+    fun getUsersForGame(): ArrayList<Users> {
+        userList.clear()
+        userList.addAll(database!!.databaseDAO().findUsersForGame(teamId, gameId))
+        return userList
+    }
+
+    fun getGameUsers(): ArrayList<Game_User> {
+        gameUserList.clear()
+        gameUserList.addAll(database!!.databaseDAO().findGameUsers(teamId, gameId))
+        return gameUserList
     }
 
     private fun getTeamByCode(code: String): ArrayList<Teams> {

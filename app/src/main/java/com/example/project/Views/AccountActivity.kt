@@ -20,7 +20,6 @@ class AccountActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.account_activity)
-
         findViewById<FloatingActionButton>(R.id.addTeamBtn).setOnClickListener {
             if (MainController.instance.getIsPlayer()) {
                 dialogAlert()

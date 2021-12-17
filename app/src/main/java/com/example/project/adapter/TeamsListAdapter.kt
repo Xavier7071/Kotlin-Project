@@ -48,7 +48,7 @@ class TeamsListAdapter(private var list: ArrayList<Teams>, private var isPlayer:
             holder.code!!.text = current.code
         }
         holder.button.setOnClickListener {
-            launchTeamInfo(position + 1)
+            launchTeamInfo(current.id)
         }
     }
 
