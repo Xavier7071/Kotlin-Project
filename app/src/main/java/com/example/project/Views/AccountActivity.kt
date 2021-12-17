@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.EditText
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -37,7 +36,6 @@ class AccountActivity : AppCompatActivity() {
         menuInflater.inflate(R.menu.menu, menu)
         return true
     }
-
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
@@ -74,7 +72,10 @@ class AccountActivity : AppCompatActivity() {
 
     private fun loadRecyclerView() {
         rvMain = findViewById(R.id.teamList)
-        rvMain.adapter = TeamsListAdapter(MainController.instance.getTeams(), MainController.instance.getIsPlayer())
+        rvMain.adapter = TeamsListAdapter(
+            MainController.instance.getTeams(),
+            MainController.instance.getIsPlayer()
+        )
         rvMain.layoutManager = LinearLayoutManager(this)
     }
 }

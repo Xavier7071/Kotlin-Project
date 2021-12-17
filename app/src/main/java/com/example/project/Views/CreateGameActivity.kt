@@ -54,7 +54,6 @@ class CreateGameActivity : AppCompatActivity() {
         return true
     }
 
-
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.action_home -> {
