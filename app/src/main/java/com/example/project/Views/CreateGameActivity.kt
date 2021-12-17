@@ -64,7 +64,6 @@ class CreateGameActivity : AppCompatActivity() {
                 val intent = Intent(this, LoginActivity::class.java)
                 startActivity(intent)
             }
-            else -> super.onOptionsItemSelected(item)
         }
         return false
     }
